@@ -9,9 +9,9 @@ jobs:
       - run: mkdir -p my_directory
       - run: echo "Trying our workspaces" > my_directory/echo-output
       - persist_to_workspace:
-        root: my_directory
-        paths:
-          - echo-output
+          root: my_directory
+          paths:
+            - echo-output
 
   two:
     docker:
@@ -20,7 +20,7 @@ jobs:
       - checkout
       - run: echo "A more familiar hi"
       - attach_workspace:
-        at: my_directory
+          at: my_directory
       - run: |
           if [[ $(cat my_directory/echo-output) == "Trying out workspaces" ]]; then
             echo "It worked!";
@@ -34,5 +34,5 @@ workflows:
     jobs:
       - one
       - two:
-        requires:
-          - one
+          requires:
+            - one
