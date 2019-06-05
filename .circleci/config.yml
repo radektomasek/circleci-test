@@ -2,23 +2,37 @@ version: 2
 jobs:
   one:
     docker:
-      - image: circleci/node:4.8.2
+      - image: circleci/node:9
     steps:
       - checkout
-      - run: ls
       - run: echo "A first hello"
-      - run: sleep 25
+      - run: mkdir -p my_directory
+      - run: echo "Trying our workspaces" > my_directory/echo-output
+      - persist_to_workspace:
+        root: my_directory
+        paths:
+          - echo-output
 
   two:
     docker:
-      - image: circleci/node:4.8.2
+      - image: circleci/node:9
     steps:
-      - run: echo "A second hello"
-      - run: sleep 15
+      - checkout
+      - run: echo "A more familiar hi"
+      - attach_workspace:
+        at: my_directory
+      - run: |
+        if [[ $(cat my_directory/echo-output) == "Trying out workspaces" ]]; then
+          echo "It worked!";
+        else
+          echo "Nope!"; exit 1
+        fi
 
 workflows:
   version: 2
   one_and_two:
     jobs:
       - one
-      - two
+      - two:
+        requires:
+          - one
