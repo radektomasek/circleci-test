@@ -6,7 +6,8 @@
   "scripts": {
     "start": "parcel --no-cache public/index.html",
     "build": "parcel build --no-cache public/index.html",
-    "commit": "git-cz"
+    "commit": "git-cz",
+    "semantic-release": "semantic-release"
   },
   "repository": {
     "type": "git",
