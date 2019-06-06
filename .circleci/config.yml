@@ -8,6 +8,7 @@ jobs:
       - run: echo "A first hello"
       - run: npm install
       - run: npm run semantic-release
+      - run: grep "version" package.json
 
 workflows:
   version: 2
