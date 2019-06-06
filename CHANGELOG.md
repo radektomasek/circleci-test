@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/radektomasek/circleci-test/compare/v1.0.0...v1.1.0) (2019-06-06)
+
+
+### Features
+
+* **component:** text update ([bbfb8e7](https://github.com/radektomasek/circleci-test/commit/bbfb8e7))
+
 # 1.0.0 (2019-06-06)
 
 
