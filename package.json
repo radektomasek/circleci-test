@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "parcel --no-cache public/index.html",
-    "build": "parcel build --no-cache public/index.html"
+    "build": "parcel build --no-cache public/index.html",
+    "commit": "git-cz"
   },
   "repository": {
     "type": "git",
@@ -22,6 +23,22 @@
     "react-dom": "^16.8.6"
   },
   "devDependencies": {
-    "parcel": "^1.12.3"
+    "@commitlint/cli": "^8.0.0",
+    "@commitlint/config-conventional": "^8.0.0",
+    "commitizen": "^3.1.1",
+    "cz-conventional-changelog": "^2.1.0",
+    "husky": "^2.4.0",
+    "parcel": "^1.12.3",
+    "semantic-release": "^15.13.12"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
   }
 }
